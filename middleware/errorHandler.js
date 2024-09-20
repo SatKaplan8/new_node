@@ -32,7 +32,7 @@ const errorHandler = (error, req, res, next) => {
             stackTrace: error.stack
         })
 
-        default: 
+        default:  
             break;
     }
 }

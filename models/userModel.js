@@ -7,7 +7,9 @@ const userSchema = mongoose.Schema({
     salary:{type: Number, required: [true, "Salary is Required"]},
     gender:{type: String, required: [true, "Gender is Required"]},
     state:{type: String, required: [true, "State is Required"]},
-    phone:{type: Number, required: [true, "Phone is Required"]}
+    phone:{type: Number, required: [true, "Phone is Required"]},
+    username:{type: String, unique: true, required:[true,"username is required"]},
+    password:{type: String,required:[true,"password required"]}
     
 },{timestamps:true}
 );

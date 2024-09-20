@@ -30,20 +30,19 @@ const deleteUser = asyncHanndler(async (req, res) => {
 
 const createUser = asyncHanndler(async (req, res) => {
     console.log(req.body)
-    // let name=req.body.name;
-    // let age=req.body.age;
-    const { name, age, dept, salary, gender, state, phone } = req.body
+  
+    const { name, age, dept, salary, gender, state, phone,username,password } = req.body
 
-    if (!name || !age || !dept || !salary || !gender || !state || !phone) {
+    if (!name || !age || !dept || !salary || !gender || !state || !phone ) {
         res.status(400)
         throw new Error('All Fields Are Mandatory');
     }
-    const newUser = await User.create({ name, age, dept, salary, gender, state, phone })
+    const newUser = await User.create({ name, age, dept, salary, gender, state, phone,username,password })
     res.status(201).json({ message: "Create a User", data: newUser })
 })
 const updateUser = asyncHanndler(async (req, res) => {
     const id = req.params.id;
-    const { name, age, dept, salary, gender, state, phone } = req.body;
+    const { name, age, dept, salary, gender, state, phone,username,password } = req.body;
     const user = await User.findById(id);
 
     if (!user) {
@@ -53,7 +52,7 @@ const updateUser = asyncHanndler(async (req, res) => {
 
     const updatedUser = await User.findByIdAndUpdate(
         id,
-        { name, age, dept, salary, gender, state, phone },
+        { name, age, dept, salary, gender, state, phone,username,password },
         { new: true }
     );
 
